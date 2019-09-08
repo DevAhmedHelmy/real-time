@@ -14,7 +14,7 @@ class CreateRepliesTable extends Migration
     public function up()
     {
         Schema::create('replies', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->text('body');
 
             $table->integer('question_id')->unsigned();
@@ -22,7 +22,7 @@ class CreateRepliesTable extends Migration
 
 
             $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
-             
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -34,6 +34,8 @@ class CreateRepliesTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('replies');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
