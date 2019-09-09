@@ -14,7 +14,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        return Question::latest()->get();
     }
 
     /**
@@ -35,7 +35,14 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $question = new Question();
+        // $question->title = $request->title;
+        // $question->slug = $request->slug;
+        // $question->body = $request->body;
+        // $question->category_id = $request->category_id;
+        // $question->user_id = $request->user_id;
+        // $question->save();
+        Question::create($request->all());
     }
 
     /**
@@ -46,7 +53,7 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        return $question;
     }
 
     /**
@@ -80,6 +87,7 @@ class QuestionController extends Controller
      */
     public function destroy(Question $question)
     {
-        //
+        $question->delete();
+        return response('deleted',201);
     }
 }
