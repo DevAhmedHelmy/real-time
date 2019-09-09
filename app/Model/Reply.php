@@ -16,6 +16,6 @@ class Reply extends Model
     }
     public function likes()
     {
-        return $this->hasMany('App\Model\Likes');
+        return $this->hasMany('App\Model\Like');
     }
 }
