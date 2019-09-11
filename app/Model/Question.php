@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
- 
+
 
 class Question extends Model
 {
@@ -23,6 +23,11 @@ class Question extends Model
     public function category()
     {
         return $this->belongsTo('App\Model\Category');
+    }
+
+    public function getPathAttribute()
+    {
+      return asset("api/questions/$this->slug");
     }
 
 }
