@@ -10,13 +10,7 @@
 </head>
 <body>
         <div id="app">
-            <v-app>
-                    <v-tabs>
-                            <v-tab>Item One</v-tab>
-                            <v-tab>Item Two</v-tab>
-                            <v-tab>Item Three</v-tab>
-                          </v-tabs>
-            </v-app>
+                <app-home></app-home>
             </div>
     
 
