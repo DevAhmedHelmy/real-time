@@ -1,6 +1,10 @@
 window.Vue = require('vue');
 window._ = require('lodash');
+import VueRouter from 'vue-router';
+import Vuelidate from 'vuelidate';
 
+Vue.use(Vuelidate);
+Vue.use(VueRouter);
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

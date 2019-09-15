@@ -1,5 +1,12 @@
 // webpack.config.js
+var path = require('path');
+var webpack = require('webpack');
+var Mix = require('laravel-mix').config;
+var plugins = require('laravel-mix').plugins;
 
+
+
+Mix.initialize();
 module.exports = {
     rules: [
       {
@@ -22,7 +29,7 @@ module.exports = {
       },
     ]
   }
-  const VueLoaderPlugin = require('vue-loader/lib/plugin')
+  const VueLoaderPlugin = require('../vue-loader/lib/plugin')
 
   module.exports = {
     mode: 'development',
