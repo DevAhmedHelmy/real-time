@@ -77,7 +77,9 @@
         this.$v.$touch()
       },
       login(){
+          
           User.login(this.form);
+
       },
       clear () {
         this.$v.$reset()
