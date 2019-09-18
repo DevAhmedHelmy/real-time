@@ -74571,10 +74571,10 @@ function () {
   _createClass(Token, [{
     key: "isValid",
     value: function isValid(token) {
-      var payload = Json.parse(atob(token));
+      var payload = this.payload(token);
 
       if (payload) {
-        return payload.iss = "http//localhost:8000/api/auth/login" ? true : undefined;
+        return payload.iss = "http://127.0.0.1:8000/api/auth/login" ? true : undefined;
       }
 
       return false;
@@ -74588,7 +74588,7 @@ function () {
   }, {
     key: "decode",
     value: function decode(payload) {
-      return Json.parse(atob(payload));
+      return JSON.parse(atob(payload));
     }
   }]);
 
@@ -74634,7 +74634,7 @@ function () {
       axios.post('/api/auth/login', data).then(function (res) {
         return _this.responseAfterLogin(res);
       })["catch"](function (error) {
-        return console.log(error.response.data.errors);
+        console.log(error);
       });
     }
   }, {
@@ -74644,7 +74644,7 @@ function () {
       var username = res.data.user;
 
       if (_Token__WEBPACK_IMPORTED_MODULE_0__["default"].isValid(access_token)) {
-        _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].store(access_token, username);
+        _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].store(username, access_token);
       }
     }
   }, {
@@ -74657,6 +74657,29 @@ function () {
       }
 
       return false;
+    }
+  }, {
+    key: "loggedIn",
+    value: function loggedIn() {
+      return this.hasToken();
+    }
+  }, {
+    key: "logout",
+    value: function logout() {
+      _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].clear();
+    }
+  }, {
+    key: "name",
+    value: function name() {
+      if (this.loggedIn()) {
+        _AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].getUser();
+      }
+    }
+  }, {
+    key: "id",
+    value: function id() {
+      var payload = _Token__WEBPACK_IMPORTED_MODULE_0__["default"].payload(_AppStorage__WEBPACK_IMPORTED_MODULE_1__["default"].getToken());
+      return payload.sub;
     }
   }]);
 
@@ -74752,6 +74775,7 @@ Vue.use(vuelidate__WEBPACK_IMPORTED_MODULE_1___default.a);
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 window.User = _Helper_User__WEBPACK_IMPORTED_MODULE_2__["default"];
+console.log(_Helper_User__WEBPACK_IMPORTED_MODULE_2__["default"].id());
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
