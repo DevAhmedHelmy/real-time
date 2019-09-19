@@ -1,24 +1,15 @@
 <template>
-
-    <v-container fluid grid-list-md>
-        <v-layout row wrap>
+    <v-container>
+        <v-layout>
             <v-flex xs8>
-                 <question v-for="question in questions" 
-                 :key="question.path" 
-                
-                 ></question>
-            
-
-            
-
+                hhshshhs
             </v-flex>
-            SIDEBAR
         </v-layout>
-
-
     </v-container>
-</template>
 
+
+
+</template>
 <script>
 import Question from './Question';
 export default {
@@ -41,6 +32,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+ 
