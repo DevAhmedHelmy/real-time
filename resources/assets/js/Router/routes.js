@@ -10,16 +10,24 @@ let routes = [
     // },
     {
         path: '/login',
+        name:'login',
         component: require('../components/login/Login.vue').default
     },
     {
+        path: '/logout',
+        name:'logout',
+        component: require('../components/login/Logout.vue').default
+    },
+    {
         path: '/signup',
+        name:'signup',
         component: require('../components/login/Signup.vue').default
     },
-    // {
-    //     path: '/profile',
-    //     component: require('./views/dashboard/Profile.vue').default
-    // },
+    {
+        path: '/forum',
+        name:'forum',
+        component: require('../components/forum/Forum.vue').default
+    },
     // {
     //     path: '/developer',
     //     component: require('./views/dashboard/Developer.vue').default

@@ -5,38 +5,40 @@
   <v-form @submit.prevent="signup">
     <v-text-field
       v-model="form.name"
-      :error-messages="nameErrors"
+       
       label="name"
       type="text"
       required
       @input="$v.name.$touch()"
       @blur="$v.name.$touch()"
     ></v-text-field>
+    <span class="text--red" v-if="errors.name">{{errors.name[0]}}</span>
 
     <!-- email field -->
     <v-text-field
       v-model="form.email"
-      :error-messages="emailErrors"
+       
       label="E-mail"
       required
       @input="$v.email.$touch()"
       @blur="$v.email.$touch()"
     ></v-text-field>
+    <span class="text--red" v-if="errors.email">{{errors.email[0]}}</span>
     <!-- password field -->
     <v-text-field
       v-model="form.password"
-      :error-messages="passwordErrors"
+       
       label="password"
       type="password"
       required
       @input="$v.password.$touch()"
       @blur="$v.password.$touch()"
     ></v-text-field>
-
+<span class="text--red" v-if="errors.password">{{errors.password[0]}}</span>
     <!-- password password_confirmation -->
     <v-text-field
       v-model="form.password_confirmation"
-      :error-messages="passwordErrors"
+       
       label="password"
       type="password"
       required
@@ -74,38 +76,19 @@
                 email: '',
                 password:'',
                 password_confirmation: '',
-            }
+            },
+            errors:{}
         }
+        
       
        
     },
-
-    computed: {
-       
-       
-      passwordErrors () {
-        const errors = []
-        if (!this.$v.password.$dirty) return errors
-        !this.$v.password.maxLength && errors.push('password min be at most 4 characters long')
-        !this.$v.password.required && errors.push('password is required.')
-        return errors
-      },
-      emailErrors () {
-        const errors = []
-        if (!this.$v.email.$dirty) return errors
-        !this.$v.email.email && errors.push('Must be valid e-mail')
-        !this.$v.email.required && errors.push('E-mail is required')
-        return errors
-      },
-      nameErrors () {
-        const errors = []
-        if (!this.$v.name.$dirty) return errors
-        !this.$v.name.name && errors.push('Must be valid Name')
-        !this.$v.name.required && errors.push('Name is required')
-        return errors
-      },
+    created(){
+      if(User.loggedIn()){
+        this.$router.push('forum')
+      }
     },
-
+    
     methods: {
       submit () {
         this.$v.$touch()
@@ -113,7 +96,12 @@
       
       signup(){
           
-          User.signup(this.form);
+         axios.post('/api/auth/signup',this.form)
+          .then(res => {
+              this.responseAfterLogin(res)
+              this.$router.push('forum')
+              })
+          .catch(error=>this.errors = error.response.data.errors)
 
       },
       clear () {

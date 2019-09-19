@@ -11,14 +11,7 @@ class User
           })
     }
 
-    signup(data){
-     
-        axios.post('/api/auth/signup',data)
-          .then(res => this.responseAfterLogin(res))
-          .catch(function (error) {
-            console.log(error);
-          })
-    }
+   
 
     responseAfterLogin(res){
         const access_token = res.data.access_token;
@@ -26,6 +19,7 @@ class User
         
         if(Token.isValid(access_token)){
             AppStoreage.store(username,access_token);
+            window.location = '/forum';
         }
     }
 
@@ -41,11 +35,13 @@ class User
     loggedIn()
     {
         return this.hasToken();
+        
     }
 
     logout()
     {
         AppStoreage.clear();
+        window.location = '/forum';
     }
 
     name()

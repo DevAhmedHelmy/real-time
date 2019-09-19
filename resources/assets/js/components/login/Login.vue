@@ -74,7 +74,11 @@
         return errors
       },
     },
-
+    created(){
+      if(User.loggedIn()){
+        this.$router.push('forum')
+      }
+    },
     methods: {
       submit () {
         this.$v.$touch()
@@ -82,6 +86,7 @@
       login(){
           
           User.login(this.form);
+          this.$router.push({name:'forum'})
 
       },
       clear () {
