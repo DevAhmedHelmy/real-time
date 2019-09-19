@@ -28,10 +28,16 @@ let routes = [
         name:'forum',
         component: require('../components/forum/Forum.vue').default
     },
-    // {
-    //     path: '/developer',
-    //     component: require('./views/dashboard/Developer.vue').default
-    // },
+    {
+        path: '/questions/:slug',
+        name:'read',
+        component: require('../components/forum/Read.vue').default
+    },
+    {
+        path: '/ask',
+        name:'ask',
+        component: require('../components/forum/Create.vue').default
+    }
 ]
 
 export default new VueRouter({

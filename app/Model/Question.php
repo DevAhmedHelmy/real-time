@@ -6,10 +6,10 @@ namespace App\Model;
 
 class Question extends Model
 {
-    // public function getRouteKeyName()
-    // {
-    //     return 'slug';
-    // }
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -27,7 +27,7 @@ class Question extends Model
 
     public function getPathAttribute()
     {
-      return asset("api/questions/$this->slug");
+      return "/questions/$this->slug";
     }
 
 }

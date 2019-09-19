@@ -2,6 +2,10 @@ window.Vue = require('vue');
 window._ = require('lodash');
 import VueRouter from 'vue-router';
 import Vuelidate from 'vuelidate';
+import VueSimplemde from 'vue-simplemde'
+import 'simplemde/dist/simplemde.min.css'
+ 
+Vue.component('vue-simplemde', VueSimplemde)
 
 Vue.use(Vuelidate);
 Vue.use(VueRouter);
@@ -18,6 +22,11 @@ window.User = User;
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+ 
+
+window.axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]');
+axios.defaults.headers.common = {'Authorization': `bearer ${localStorage.getItem('token')}}`}
+export default axios;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
