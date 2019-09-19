@@ -1,0 +1,20 @@
+-------------------- Auto-Git Log --------------------
+		Fri Sep 20 2019 00:21:22 GMT+0200 (Eastern European Standard Time)
+------------------------------------------------------
+
+Modified files:
+* package-lock.json
+* public/css/app.css
+* public/js/app.js
+* resources/assets/js/components/forum/Forum.vue
+* resources/assets/js/components/login/Signup.vue
+
+
+Created files:
+* .autogit/logs/log-19-8-2019-23-51-17.txt
+
+
+Deleted files:
+
+
+Renamed files:

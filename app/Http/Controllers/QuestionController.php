@@ -47,15 +47,15 @@ class QuestionController extends Controller
      */
     public function store(QuestionRequest $request)
     {
-        dd("hello");
-        // $question = new Question();
-        // $question->title = $request->title;
-        // $question->slug = $request->slug;
-        // $question->body = $request->body;
-        // $question->category_id = $request->category_id;
-        // $question->user_id = $request->user_id;
-        // $question->save();
-        Question::create($request->all());
+        
+        $question = new Question();
+        $question->title = $request->title;
+        $question->slug = str_slug($request->title);
+        $question->body = $request->body;
+        $question->category_id = $request->category_id;
+        $question->user_id = auth()->user()->id;
+        $question->save();
+        // Question::create($request->all());
     }
 
     /**

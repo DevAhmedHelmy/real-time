@@ -12,10 +12,11 @@
     ></v-text-field>
     <v-select
         :items="categories"
-        label="Category"
-        v-model="form.category_id"
-        item-text="name"
         item-value="id"
+        item-text="name"
+        
+        v-model="form.category_id"
+        label="Category"
         solo
         
     ></v-select>
