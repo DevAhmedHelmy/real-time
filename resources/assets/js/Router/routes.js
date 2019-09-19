@@ -12,6 +12,10 @@ let routes = [
         path: '/login',
         component: require('../components/login/Login.vue').default
     },
+    {
+        path: '/signup',
+        component: require('../components/login/Signup.vue').default
+    },
     // {
     //     path: '/profile',
     //     component: require('./views/dashboard/Profile.vue').default

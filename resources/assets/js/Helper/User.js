@@ -11,6 +11,15 @@ class User
           })
     }
 
+    signup(data){
+     
+        axios.post('/api/auth/signup',data)
+          .then(res => this.responseAfterLogin(res))
+          .catch(function (error) {
+            console.log(error);
+          })
+    }
+
     responseAfterLogin(res){
         const access_token = res.data.access_token;
         const username = res.data.user;

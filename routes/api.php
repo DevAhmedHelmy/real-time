@@ -19,7 +19,7 @@ Route::group([
     'prefix' => 'auth'
 
 ], function () {
-    Route::post('signup', 'AuthController@signup');
+    Route::post('signup', 'AuthController@signup')->name('signup');
     Route::post('login', 'AuthController@login')->name('login');
     
     Route::post('logout', 'AuthController@logout');

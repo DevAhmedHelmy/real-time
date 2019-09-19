@@ -2,8 +2,18 @@
 <v-container>
 
 
-  <v-form @submit.prevent="login">
-    
+  <v-form @submit.prevent="signup">
+    <v-text-field
+      v-model="form.name"
+      :error-messages="nameErrors"
+      label="name"
+      type="text"
+      required
+      @input="$v.name.$touch()"
+      @blur="$v.name.$touch()"
+    ></v-text-field>
+
+    <!-- email field -->
     <v-text-field
       v-model="form.email"
       :error-messages="emailErrors"
@@ -11,8 +21,8 @@
       required
       @input="$v.email.$touch()"
       @blur="$v.email.$touch()"
-    >
-    </v-text-field>
+    ></v-text-field>
+    <!-- password field -->
     <v-text-field
       v-model="form.password"
       :error-messages="passwordErrors"
@@ -22,12 +32,23 @@
       @input="$v.password.$touch()"
       @blur="$v.password.$touch()"
     ></v-text-field>
-     
 
-    <v-btn class="mr-4" type="submit">submit</v-btn>
+    <!-- password password_confirmation -->
+    <v-text-field
+      v-model="form.password_confirmation"
+      :error-messages="passwordErrors"
+      label="password"
+      type="password"
+      required
+      @input="$v.password.$touch()"
+      @blur="$v.password.$touch()"
+    ></v-text-field>
+     
+    <!-- submit -->
+    <v-btn class="mr-4" type="submit">Sign Up</v-btn>
     <v-btn @click="clear">clear</v-btn>
-    <router-link to="/signup">
-          <v-btn color="blue">signup</v-btn>
+    <router-link to="/login">
+          <v-btn color="blue">Login</v-btn>
         </router-link>
   </v-form>
   </v-container>
@@ -40,16 +61,19 @@
     mixins: [validationMixin],
 
     validations: {
-      password: { required, minLength: minLength(4) },
-      email: { required, email },
+        name: { required, minLength: minLength(4) },
+        password: { required, minLength: minLength(4) },
+        email: { required, email },
        
     },
 
     data() {
         return {
             form:{
+                name: '',
                 email: '',
-                password:''
+                password:'',
+                password_confirmation: '',
             }
         }
       
@@ -73,15 +97,23 @@
         !this.$v.email.required && errors.push('E-mail is required')
         return errors
       },
+      nameErrors () {
+        const errors = []
+        if (!this.$v.name.$dirty) return errors
+        !this.$v.name.name && errors.push('Must be valid Name')
+        !this.$v.name.required && errors.push('Name is required')
+        return errors
+      },
     },
 
     methods: {
       submit () {
         this.$v.$touch()
       },
-      login(){
+      
+      signup(){
           
-          User.login(this.form);
+          User.signup(this.form);
 
       },
       clear () {
