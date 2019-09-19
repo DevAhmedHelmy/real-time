@@ -3,15 +3,16 @@
     <v-container fluid grid-list-md>
         <v-layout row wrap>
             <v-flex xs8>
-                 <question v-for="question in questions" :key="question.path" >
-
-                </question>
+                 <question v-for="question in questions" 
+                 :key="question.path" 
+                
+                 ></question>
             
 
-            SIDEBAR
+            
 
             </v-flex>
-
+            SIDEBAR
         </v-layout>
 
 
