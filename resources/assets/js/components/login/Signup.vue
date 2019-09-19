@@ -98,10 +98,10 @@
           
          axios.post('/api/auth/signup',this.form)
           .then(res => {
-              this.responseAfterLogin(res)
+              User.responseAfterLogin(res)
               this.$router.push('forum')
               })
-          .catch(error=>this.errors = error.response.data.errors)
+          .catch(function(error){console.log(error)})
 
       },
       clear () {
