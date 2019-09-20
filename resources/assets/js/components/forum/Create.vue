@@ -56,7 +56,10 @@ export default {
         create(){
           
          axios.post('/api/questions',this.form)
-          .then(res => console.log(res.data))
+          .then(res => {
+                  console.log(res.data) 
+                  this.$router.push('forum')
+              })
           .catch(error=>this.errors = error.response.data.errors)
 
       },

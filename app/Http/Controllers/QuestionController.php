@@ -7,7 +7,7 @@ use App\Model\Question;
 use Illuminate\Http\Request;
 use App\Http\Resources\QuestionResource;
 use Symfony\Component\HttpFoundation\Response;
-
+use Illuminate\Support\Str;
 class QuestionController extends Controller
 {
     /**
@@ -47,15 +47,23 @@ class QuestionController extends Controller
      */
     public function store(QuestionRequest $request)
     {
-        
-        $question = new Question();
-        $question->title = $request->title;
-        $question->slug = str_slug($request->title);
-        $question->body = $request->body;
-        $question->category_id = $request->category_id;
-        $question->user_id = auth()->user()->id;
-        $question->save();
+        // first way
+        // $question = new Question();
+        // $question->title = $request->title;
+        // $question->slug = Str::slug($request->title);
+        // $question->body = $request->body;
+        // $question->category_id = $request->category_id;
+        // $question->user_id = auth()->user()->id;
+        // $question->save();
+
+        // 2-use to save
         // Question::create($request->all());
+
+        // 3-use to save
+        $request['slug'] = Str::slug($request->title);
+        auth()->user()->questions()->create($request->all());
+
+        return response('Created',Response::HTTP_CREATED);
     }
 
     /**
