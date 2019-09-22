@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use App\Http\Resources\CategoryResource;
 use App\Model\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 
 class CategoryController extends Controller
@@ -46,13 +48,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        
+       
+        $category = auth()->user()->categories()->create($request->all());
         // $category = new Category();
         // $category->name = $request->name;
-        // $category->slug = $request->slug;
+        // $category->slug = Str::slug($request->name);
+        // $category->user_id = auth()->user()->id;
         // $category->save();
-        Category::create($request->all());
-        return response('Created',Response::HTTP_ACCEPTED);
+        // Category::create($request->all());
+        return response(new CategoryResource($category),Response::HTTP_ACCEPTED);
     }
 
     /**
@@ -88,9 +92,9 @@ class CategoryController extends Controller
     {
         $category->update([
             'name' => $request->name,
-            'slug' =>  preg_replace('/\s+/', '-', $request->slug)
+            'slug' => Str::slug($request->name)
         ]);
-        return response('Updated', Response::HTTP_ACCEPTED);
+        return response(new CategoryResource($category), Response::HTTP_ACCEPTED);
     }
 
     /**

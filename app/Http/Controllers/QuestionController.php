@@ -6,6 +6,7 @@ use App\Http\Requests\QuestionRequest;
 use App\Model\Question;
 use Illuminate\Http\Request;
 use App\Http\Resources\QuestionResource;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Str;
 class QuestionController extends Controller
@@ -47,7 +48,16 @@ class QuestionController extends Controller
      */
     public function store(QuestionRequest $request)
     {
+<<<<<<< HEAD
         // first way
+=======
+        
+        // $request['slug'] = Str::slug($request->title);
+
+        $question = auth()->user()->questions()->create($request->all());
+       
+        return response(new QuestionResource($question),Response::HTTP_ACCEPTED);
+>>>>>>> 2a6a16b292edb3be8ee3601aba5dce3f1ae69e7c
         // $question = new Question();
         // $question->title = $request->title;
         // $question->slug = Str::slug($request->title);
@@ -55,6 +65,7 @@ class QuestionController extends Controller
         // $question->category_id = $request->category_id;
         // $question->user_id = auth()->user()->id;
         // $question->save();
+<<<<<<< HEAD
 
         // 2-use to save
         // Question::create($request->all());
@@ -64,6 +75,9 @@ class QuestionController extends Controller
         auth()->user()->questions()->create($request->all());
 
         return response('Created',Response::HTTP_CREATED);
+=======
+        // Question::create($request->all());
+>>>>>>> 2a6a16b292edb3be8ee3601aba5dce3f1ae69e7c
     }
 
     /**
@@ -85,7 +99,7 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        return new QuestionResource($question);
     }
 
     /**

@@ -46,6 +46,10 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany('App\Model\Reply');
     }
+    public function categories()
+    {
+        return $this->hasMany('App\Model\Category');
+    }
 
     // jwt
     // Rest omitted for brevity
