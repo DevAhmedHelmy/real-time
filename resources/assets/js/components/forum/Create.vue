@@ -45,7 +45,7 @@ export default {
     },
     created(){
         axios.get('api/categories')
-        .then(res => this.categories = res.data.data)
+        .then(res =>this.categories = res.data.data)
         .catch(function (error) {
                 // handle error
                 console.log(error);
@@ -55,7 +55,7 @@ export default {
         create(){
           
          axios.post('/api/questions',this.form)
-          .then(res => console.log(res.data))
+          .then(res => this.$router.push(res.data.path))
           .catch(error=>this.errors = error.response.data.errors)
 
       },

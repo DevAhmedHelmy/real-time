@@ -101,7 +101,7 @@
               this.responseAfterLogin(res)
               this.$router.push('forum')
               })
-          .catch(error=>this.errors = error.response.data.errors)
+          .catch(error=>console.log(error))
 
       },
       clear () {

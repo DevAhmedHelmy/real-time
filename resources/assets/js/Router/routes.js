@@ -37,6 +37,14 @@ let routes = [
         path: '/ask',
         name:'ask',
         component: require('../components/forum/Create.vue').default
+    },
+
+    // start Category
+
+    {
+        path: '/category',
+        name:'category',
+        component: require('../components/category/Create.vue').default
     }
 ]
 

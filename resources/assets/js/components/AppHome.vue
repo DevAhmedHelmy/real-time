@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div mt-2>
     <toolbar></toolbar>
     
         <router-view></router-view>

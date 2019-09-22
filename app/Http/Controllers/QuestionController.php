@@ -6,6 +6,7 @@ use App\Http\Requests\QuestionRequest;
 use App\Model\Question;
 use Illuminate\Http\Request;
 use App\Http\Resources\QuestionResource;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 
 class QuestionController extends Controller
@@ -47,7 +48,12 @@ class QuestionController extends Controller
      */
     public function store(QuestionRequest $request)
     {
-        dd("hello");
+        
+        // $request['slug'] = Str::slug($request->title);
+
+        $question = auth()->user()->questions()->create($request->all());
+       
+        return response(new QuestionResource($question),Response::HTTP_ACCEPTED);
         // $question = new Question();
         // $question->title = $request->title;
         // $question->slug = $request->slug;
@@ -55,7 +61,7 @@ class QuestionController extends Controller
         // $question->category_id = $request->category_id;
         // $question->user_id = $request->user_id;
         // $question->save();
-        Question::create($request->all());
+        // Question::create($request->all());
     }
 
     /**
@@ -77,7 +83,7 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+        return new QuestionResource($question);
     }
 
     /**
