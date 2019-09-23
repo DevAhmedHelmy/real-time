@@ -3,7 +3,10 @@
     <edit-question v-if="editing" :data = question ></edit-question>
      
     <show-question v-else :data = question ></show-question>
-     
+    <v-container>
+        <replies :question="question"></replies>
+        <new-reply :questionSlug="question.slug"></new-reply>
+    </v-container>
     
 </div>
     
@@ -12,8 +15,10 @@
 <script>
 import editQuestion from './editQuestion';
 import ShowQuestion from './ShowQuestion';
+import Replies from '../reply/Replies';
+import NewReply from '../reply/CreateReply';
 export default {
-    components:{editQuestion,ShowQuestion},
+    components:{editQuestion,ShowQuestion,Replies,NewReply},
     data(){
         return{
             editing:false,
