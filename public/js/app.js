@@ -2447,14 +2447,7 @@ __webpack_require__.r(__webpack_exports__);
 
   methods: {
     create() {
-<<<<<<< HEAD
-      axios.post('/api/questions', this.form).then(res => {
-        console.log(res.data);
-        this.$router.push('forum');
-      }).catch(error => this.errors = error.response.data.errors);
-=======
       axios.post('/api/questions', this.form).then(res => this.$router.push(res.data.path)).catch(error => this.errors = error.response.data.errors);
->>>>>>> 2a6a16b292edb3be8ee3601aba5dce3f1ae69e7c
     }
 
   }
@@ -3029,13 +3022,9 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/api/auth/signup', this.form).then(res => {
         User.responseAfterLogin(res);
         this.$router.push('forum');
-<<<<<<< HEAD
       }).catch(function (error) {
         console.log(error);
-      });
-=======
       }).catch(error => console.log(error));
->>>>>>> 2a6a16b292edb3be8ee3601aba5dce3f1ae69e7c
     },
 
     clear() {
@@ -17051,30 +17040,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-<<<<<<< HEAD
 exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-=======
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"id\":\"data-v-6f9b0ccc\",\"scoped\":true,\"sourceMap\":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/forum/Forum.vue":
-/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/style-compiler?{"optionsId":"0","vue":true,"id":"data-v-6f9b0ccc","scoped":true,"sourceMap":false}!./node_modules/vue-loader/lib/selector.js?type=styles&index=0!./resources/assets/js/components/forum/Forum.vue ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
->>>>>>> 2a6a16b292edb3be8ee3601aba5dce3f1ae69e7c
 
 // exports
 
@@ -41244,12 +41210,6 @@ if (false) {}
 
 /***/ }),
 
-<<<<<<< HEAD
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6f9b0ccc\",\"hasScoped\":false,\"optionsId\":\"0\",\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/forum/Forum.vue":
-/*!*************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-6f9b0ccc","hasScoped":false,"optionsId":"0","buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/forum/Forum.vue ***!
-  \*************************************************************************************************************************************************************************************************************************************************************/
-=======
 /***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-65412995\",\"hasScoped\":false,\"optionsId\":\"0\",\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/forum/editQuestion.vue":
 /*!********************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-65412995","hasScoped":false,"optionsId":"0","buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/forum/editQuestion.vue ***!
@@ -41343,11 +41303,10 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6f9b0ccc\",\"hasScoped\":true,\"optionsId\":\"0\",\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/forum/Forum.vue":
-/*!************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-6f9b0ccc","hasScoped":true,"optionsId":"0","buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/forum/Forum.vue ***!
-  \************************************************************************************************************************************************************************************************************************************************************/
->>>>>>> 2a6a16b292edb3be8ee3601aba5dce3f1ae69e7c
+/***/ "./node_modules/vue-loader/lib/template-compiler/index.js?{\"id\":\"data-v-6f9b0ccc\",\"hasScoped\":false,\"optionsId\":\"0\",\"buble\":{\"transforms\":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/forum/Forum.vue":
+/*!*************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/template-compiler?{"id":"data-v-6f9b0ccc","hasScoped":false,"optionsId":"0","buble":{"transforms":{}}}!./node_modules/vue-loader/lib/selector.js?type=template&index=0!./resources/assets/js/components/forum/Forum.vue ***!
+  \*************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -41378,12 +41337,8 @@ var render = function() {
             }),
             1
           ),
-<<<<<<< HEAD
-          _vm._v("\n        SIDEBAR\n    ")
-=======
           _vm._v(" "),
           _c("v-flex", { attrs: { xs4: "" } }, [_c("app-sidebar")], 1)
->>>>>>> 2a6a16b292edb3be8ee3601aba5dce3f1ae69e7c
         ],
         1
       )
@@ -96363,8 +96318,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuetify__WEBPACK_IMPORTED_MODULE_
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /media/ahmed/5f260234-8395-4b31-b6e5-a16df7deebf6/My Projects/Laravel/Laravel&&Vue/real-time-single-page-forum-app/resources/assets/js/app.js */"./resources/assets/js/app.js");
-module.exports = __webpack_require__(/*! /media/ahmed/5f260234-8395-4b31-b6e5-a16df7deebf6/My Projects/Laravel/Laravel&&Vue/real-time-single-page-forum-app/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
+__webpack_require__(/*! /media/ahmed/216e7f24-0bb6-4f60-87e2-6c0007e38179/Ahmed Helmy/sp/learn/real-time-single-page-forum-app/resources/assets/js/app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! /media/ahmed/216e7f24-0bb6-4f60-87e2-6c0007e38179/Ahmed Helmy/sp/learn/real-time-single-page-forum-app/resources/assets/sass/app.scss */"./resources/assets/sass/app.scss");
 
 
 /***/ }),
