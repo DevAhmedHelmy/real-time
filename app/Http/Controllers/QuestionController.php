@@ -6,7 +6,6 @@ use App\Http\Requests\QuestionRequest;
 use App\Model\Question;
 use Illuminate\Http\Request;
 use App\Http\Resources\QuestionResource;
-use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 
 class QuestionController extends Controller

@@ -56,6 +56,7 @@ export default {
         create(){
           
          axios.post('/api/questions',this.form)
+<<<<<<< HEAD
  
           .then(res => {
                   console.log(res.data) 
@@ -64,6 +65,9 @@ export default {
  
           .then(res => this.$router.push(res.data.path))
  
+=======
+          .then(res => this.$router.push(res.data.path))
+>>>>>>> eb0c17fe12cb27d1ac980b3997df60e7b771451c
           .catch(error=>this.errors = error.response.data.errors)
 
       },

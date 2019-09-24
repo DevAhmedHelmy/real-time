@@ -54,7 +54,7 @@ class ReplyController extends Controller
         //     'question_id' => $question->id
         // ]);
 
-        return response(['reply' => $reply],Response::HTTP_CREATED);
+        return response(['reply' => new ReplyResource($reply)],Response::HTTP_CREATED);
     }
 
     /**

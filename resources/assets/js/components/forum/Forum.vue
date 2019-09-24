@@ -10,13 +10,26 @@
                  ></question>
             
 
+<<<<<<< HEAD
+=======
+                
+>>>>>>> eb0c17fe12cb27d1ac980b3997df60e7b771451c
             </v-flex>
             <v-flex xs4>
                 <app-sidebar></app-sidebar>
             </v-flex>
+<<<<<<< HEAD
             </v-layout>
             </v-container>
             </template>
+=======
+        </v-layout>
+
+
+    </v-container>
+</template>
+
+>>>>>>> eb0c17fe12cb27d1ac980b3997df60e7b771451c
 <script>
 import Question from './Question';
 import AppSidebar from './AppSidebar';
