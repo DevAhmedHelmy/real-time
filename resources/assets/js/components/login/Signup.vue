@@ -101,11 +101,7 @@
               User.responseAfterLogin(res)
               this.$router.push('forum')
               })
-<<<<<<< HEAD
-          .catch(function(error){console.log(error)})
-=======
           .catch(error=>console.log(error))
->>>>>>> 2a6a16b292edb3be8ee3601aba5dce3f1ae69e7c
 
       },
       clear () {
