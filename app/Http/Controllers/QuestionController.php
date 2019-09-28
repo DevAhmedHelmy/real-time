@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use App\Http\Resources\QuestionResource;
 use Symfony\Component\HttpFoundation\Response;
 
-
 class QuestionController extends Controller
 {
     /**
@@ -49,7 +48,6 @@ class QuestionController extends Controller
      */
     public function store(QuestionRequest $request)
     {
-        // first way
         
         // $request['slug'] = Str::slug($request->title);
         
@@ -63,15 +61,6 @@ class QuestionController extends Controller
         // $question->category_id = $request->category_id;
         // $question->user_id = auth()->user()->id;
         // $question->save();
-
-        // 2-use to save
-        // Question::create($request->all());
-
-        // 3-use to save
-        // $request['slug'] = Str::slug($request->title);
-        // auth()->user()->questions()->create($request->all());
-
-        // return response('Created',Response::HTTP_CREATED);
         // Question::create($request->all());
     }
 

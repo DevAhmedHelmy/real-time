@@ -102,7 +102,7 @@
               this.$router.push('forum')
               })
           .catch(function(error){console.log(error)})
-          .catch(error=>console.log(error))
+          
 
       },
       clear () {
