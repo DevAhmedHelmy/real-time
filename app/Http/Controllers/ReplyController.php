@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ReplyResource;
 use App\Model\Question;
 use App\Model\Reply;
+use App\Notifications\NewReplyNotifications;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use App\Events\DeleteReplyEvent;
 class ReplyController extends Controller
 {
     /**
@@ -48,7 +49,13 @@ class ReplyController extends Controller
     public function store(Request $request,Question $question)
     {
         $reply = $question->replies()->create($request->all());
-
+        
+        if($reply->user_id !== $question->user_id)
+        {
+            $user = $question->user;
+            $user->notify(new NewReplyNotifications($reply));
+        }
+        
         // Reply::create([
         //     'body' => $request->body,
         //     'question_id' => $question->id
@@ -98,9 +105,12 @@ class ReplyController extends Controller
      * @param  \App\Model\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reply $reply,Question $question)
+    public function destroy(Question $question,Reply $reply)
     {
-        $reply->delete();
-        return response('deleted',201);
+         $reply->delete();
+         broadcast(new DeleteReplyEvent($reply->id))->toOthers();
+         return response('deleted',201);
+        // $reply->delete();
+        // return response('deleted',201);
     }
 }

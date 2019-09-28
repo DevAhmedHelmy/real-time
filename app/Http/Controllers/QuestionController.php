@@ -27,6 +27,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
+        
         return QuestionResource::collection(Question::latest()->get());
     }
 
@@ -51,7 +52,7 @@ class QuestionController extends Controller
         // first way
         
         // $request['slug'] = Str::slug($request->title);
-
+        
         $question = auth()->user()->questions()->create($request->all());
        
         return response(new QuestionResource($question),Response::HTTP_ACCEPTED);

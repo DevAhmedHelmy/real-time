@@ -22,8 +22,8 @@ window.User = User;
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
- 
-
+let jwtToken = `Bearer ${localStorage.getItem('token')}}`;
+let csrf = document.querySelector('meta[name="csrf-token"]');
 window.axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]');
 axios.defaults.headers.common = {'Authorization': `bearer ${localStorage.getItem('token')}}`}
 export default axios;
@@ -34,13 +34,21 @@ export default axios;
  * allows your team to easily build robust real-time web applications.
  */
 
-// import Echo from 'laravel-echo';
+import Echo from 'laravel-echo';
 
-// window.Pusher = require('pusher-js');
+window.Pusher = require('pusher-js');
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     encrypted: true
-// });
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: "751ba2cea3e76eebad2b",
+    cluster: "ap2",
+    encrypted: true,
+    auth:{
+        headers:{
+            
+            Authorization: jwtToken,
+            
+        }
+       
+    }
+});

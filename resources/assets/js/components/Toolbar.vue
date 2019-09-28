@@ -6,7 +6,7 @@
       <div class="flex-grow-1"></div>
 
       <v-toolbar-items>
-        
+        <notification v-if="loggedIn"></notification>
         <router-link
           v-for="item in items"
           :key="item.title"
@@ -27,9 +27,12 @@
   </div>
 </template>
 <script>
+import Notification from './Notifications';
 export default {
+    components:{Notification},
     data(){
       return{
+        loggedIn:User.loggedIn(),
         items:[
           {title:'Forum', to:'/forum',show:true},
           {title:'Ask Question', to:'/ask',show:User.loggedIn()},
